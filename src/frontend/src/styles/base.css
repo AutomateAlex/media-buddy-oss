@@ -1,0 +1,114 @@
+/* ===== base — split from styles.css L1-113 ===== */
+/* ==========================================================================
+   Media Buddy — design system v2 (dark purple, glass-on-dark)
+   ========================================================================== */
+
+:root {
+  /* DARK palette (default). Light theme overrides via [data-theme="light"]. */
+  /* Surfaces */
+  --bg-0: #0b0d12;
+  --bg-1: #14171f;
+  --bg-2: #1a1d28;
+  --bg-3: #1f2331;
+
+  /* Glass overlays — semi-transparent on dark */
+  --glass-1: rgba(255, 255, 255, 0.03);
+  --glass-2: rgba(255, 255, 255, 0.06);
+
+  /* Borders — Linear-style, almost invisible but always present */
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.10);
+
+  /* Text */
+  --text-0: #e7e9ee;
+  --text-1: #9398a3;
+  --text-2: #5f6471;
+
+  /* Brand */
+  --accent: #6d5ef6;
+  --accent-2: #7c5cff;
+  --accent-soft: rgba(109, 94, 246, 0.10);
+  --accent-strong: rgba(109, 94, 246, 0.32);
+  --accent-glow: rgba(109, 94, 246, 0.20);
+
+  /* Semantic */
+  --green: #22c55e;
+  --green-soft: rgba(34, 197, 94, 0.14);
+  --red: #ef4444;
+  --red-soft: rgba(239, 68, 68, 0.14);
+  --amber: #f59e0b;
+  --amber-soft: rgba(245, 158, 11, 0.14);
+
+  /* Spacing — 8px baseline */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
+  --s-5: 24px; --s-6: 32px; --s-8: 48px; --s-10: 64px;
+
+  /* Radii */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 22px;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+               "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+}
+
+/* LIGHT theme — applied via <html data-theme="light">. Keeps accent +
+   semantic colors; only surfaces / text / borders / glass are inverted. */
+:root[data-theme="light"] {
+  --bg-0: #ffffff;
+  --bg-1: #f5f6fa;
+  --bg-2: #ebedf3;
+  --bg-3: #e1e4ec;
+
+  --glass-1: rgba(0, 0, 0, 0.025);
+  --glass-2: rgba(0, 0, 0, 0.055);
+
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.14);
+
+  --text-0: #15171c;
+  --text-1: #4c525e;
+  --text-2: #82879a;
+}
+
+/* GRAY theme — warm mid-tone "premium gray". Softer than pure dark,
+   reads as luxurious neutral. Surfaces slightly desaturated, text more
+   relaxed contrast. Accent + semantic colors unchanged. */
+:root[data-theme="gray"] {
+  --bg-0: #232529;
+  --bg-1: #2a2c31;
+  --bg-2: #33363c;
+  --bg-3: #3c3f47;
+
+  --glass-1: rgba(255, 255, 255, 0.04);
+  --glass-2: rgba(255, 255, 255, 0.08);
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+
+  --text-0: #ebecef;
+  --text-1: #b0b3ba;
+  --text-2: #797d85;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  background:
+    radial-gradient(1200px 800px at 12% 8%, rgba(109, 94, 246, 0.07), transparent 60%),
+    radial-gradient(900px 700px at 88% 92%, rgba(34, 197, 94, 0.04), transparent 60%),
+    var(--bg-0);
+  color: var(--text-0);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--accent-strong); color: white; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: 0; background: transparent; color: inherit; }
+input, textarea, select { font: inherit; }
+

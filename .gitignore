@@ -1,0 +1,110 @@
+# Environment & secrets — NEVER commit these
+.env
+.env.local
+.env.*.local
+*.token
+.media-buddy/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+*.egg
+build/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Node / Electron
+node_modules/
+src/frontend/dist/
+src/frontend/dist-electron/
+src/frontend/release/
+src/frontend/.vite/
+*.tsbuildinfo
+
+# OS / Editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+*.sublime-*
+
+# Logs / runtime
+*.log
+logs/
+/tmp/
+
+# OpenMontage residue (we've fully decoupled — never re-add)
+vendor/
+
+# Database files
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Pipeline artifacts (large files generated at runtime)
+~/.media-buddy/
+
+# Local test scratch — tmp_* of ANY extension (a stray .wav sample got committed once)
+tmp_*
+demo_*.mp4
+
+# Agent/editor scratch that must never reach the repo
+.checkpoints/
+
+# Next.js dev residue. This is a Vite app — `npx next dev` here is always a mistake,
+# but it leaves behind telemetry and an RSC encryption key. Ignore it so nothing
+# gets committed if it happens again.
+.next/
+
+# Per-machine / runtime state — NOT for the repo
+# (Claude Code per-project settings, runtime session state, installer artifact)
+.claude/
+sessions/
+project.state.json
+memory/
+
+# Smoke-test output directories (large generated artifacts)
+scripts/*_out/
+scripts/__pycache__/
+
+.gstack/
+
+# P3.3 E2E harness smoke outputs — every run is regenerable from .txt inputs;
+# the mp4s and clip downloads are large + not source-of-truth.
+e2e-runs/
+
+# Harness CLI test outputs (regenerable from .txt inputs)
+scripts/_test_scripts/**/*.report.md
+scripts/_test_scripts/**/*.report.json
+scripts/_test_scripts/**/*.observe.md
+scripts/_test_scripts/**/*.verify.md
+scripts/_test_scripts/**/*.retrieve.md
+scripts/_test_scripts/**/*.full_verify.md
+scripts/_test_scripts/topics/comparison.md
+
+# 临时/调试产物 (上云会话)
+tmp_*/
+prompts_dump/
+mb_*.tar.gz
+
+# ── 密钥文件：任何形状的 env 都不许进仓（2026-08-15 加固）──────
+# 原来只挡 `.env` / `.env.local`，而服务器上的文件叫 `worker.env`、
+# `worker.staging.env` —— 有人把它拷到本地排查，一个 `git add .` 就进去了。
+*.env
+!.env.example
+worker*.env
+*.env.bak-*

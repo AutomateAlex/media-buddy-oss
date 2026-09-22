@@ -1,0 +1,177 @@
+/* ===== misc — split from styles.css L7746-7921 ===== */
+/* Insufficient-points recharge dialog (global, fired on any 402). */
+.recharge-dialog { max-width: 380px; text-align: left; }
+.recharge-dialog h2 { margin: 0 0 8px; }
+.recharge-dialog > p { color: var(--text-2); margin: 0 0 16px; }
+.recharge-dialog-stats {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px;
+}
+.recharge-dialog-stats > div {
+  background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px; display: flex; flex-direction: column; gap: 4px;
+}
+.recharge-dialog-stats span { font-size: 12px; color: var(--text-2); }
+.recharge-dialog-stats strong { font-size: 20px; }
+.recharge-dialog-actions { display: flex; justify-content: flex-end; gap: 10px; }
+
+/* Copyable project ID chip on the project detail page (for bug reports). */
+.project-id-chip {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+  background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px;
+  padding: 5px 10px; font-size: 12px; color: var(--text-2); cursor: pointer;
+  transition: border-color .15s, color .15s;
+}
+.project-id-chip:hover { border-color: var(--accent); color: var(--text-1); }
+.project-id-chip code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--text-1); }
+.project-id-chip span { opacity: .65; }
+
+/* Prominent params line at the top of the script focus panel. */
+.focus-params {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+  font-size: 16px; font-weight: 700; color: var(--text-1);
+  background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px;
+  padding: 10px 14px; margin-bottom: 8px;
+}
+.focus-params .sep { color: var(--text-2); font-weight: 400; opacity: .5; }
+
+/* 🐞 可疑片看板 (admin) */
+.suspect-zone { margin: 18px 0; padding: 4px 0 4px 16px; }
+.suspect-zone-title { font-size: 16px; margin: 0 0 8px; }
+.suspect-zone-count { color: var(--text-2); font-weight: 400; font-size: 13px; }
+.suspect-type {
+  border: 1px solid var(--border); border-radius: 10px;
+  margin-bottom: 8px; overflow: hidden;
+}
+.suspect-type-head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; cursor: pointer; user-select: none;
+}
+.suspect-type-head:hover { filter: brightness(0.98); }
+.suspect-stat { margin-left: auto; color: var(--text-2); font-size: 13px; white-space: nowrap; }
+.suspect-toggle { color: var(--text-2); font-size: 12px; }
+.escalated-badge {
+  background: #e5484d; color: #fff; font-size: 11px; font-weight: 700;
+  border-radius: 6px; padding: 1px 6px;
+}
+.suspect-samples {
+  border-top: 1px solid var(--border); padding: 6px 14px;
+  background: var(--bg-1);
+}
+.suspect-sample {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 0; font-size: 13px; border-bottom: 1px dashed var(--border);
+}
+.suspect-sample:last-child { border-bottom: none; }
+.suspect-sample code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--text-1); background: var(--bg-2); padding: 1px 6px; border-radius: 5px;
+}
+.suspect-sample-detail { color: var(--text-2); flex: 1; }
+.suspect-diag-link { color: var(--accent); white-space: nowrap; text-decoration: none; }
+.suspect-diag-link:hover { text-decoration: underline; }
+
+/* 通用开关(背景音乐等):点一下在开/关之间切换 */
+.mb-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex: 0 0 auto;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: #cbd5e1;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.mb-switch.is-on { background: var(--accent, #6366f1); }
+.mb-switch:focus-visible { outline: 2px solid var(--accent, #6366f1); outline-offset: 2px; }
+.mb-switch-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s ease;
+}
+.mb-switch.is-on .mb-switch-knob { transform: translateX(20px); }
+
+/* ==========================================================================
+   Support / FAQ (self-service Q&A — 帮助/客服)
+   ========================================================================== */
+.faq-subtitle { color: var(--text-1); font-size: 14px; margin: 0 0 16px; }
+.faq-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--glass-1);
+  overflow: hidden;
+}
+.faq-item.open { border-color: var(--border-strong); }
+.faq-q {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 14px 16px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text-0);
+  font-size: 15px; font-weight: 600;
+}
+.faq-q:hover { background: var(--glass-2); }
+.faq-chev { color: var(--text-2); font-size: 18px; line-height: 1; flex-shrink: 0; }
+.faq-a {
+  padding: 0 16px 16px;
+  color: var(--text-1);
+  font-size: 14px; line-height: 1.7;
+}
+.faq-a p { margin: 0 0 8px; }
+.faq-a p:last-child { margin-bottom: 0; }
+.faq-footnote { margin-top: 20px; font-size: 13px; }
+
+/* ==========================================================================
+   AI 选题 loading — spinner + shimmer skeleton (so the ~35s wait doesn't
+   look frozen).
+   ========================================================================== */
+.ai-loading-label { display: inline-flex; align-items: center; gap: 6px; }
+.ai-spinner {
+  display: inline-block;
+  width: 13px; height: 13px;
+  border: 2px solid var(--border-strong, rgba(120,120,140,0.4));
+  border-top-color: var(--accent, #7c5cff);
+  border-radius: 50%;
+  animation: ai-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+.ai-spinner-lg { width: 20px; height: 20px; border-width: 3px; }
+@keyframes ai-spin { to { transform: rotate(360deg); } }
+
+.ai-topics-loading { padding: 8px 2px 4px; }
+.ai-topics-loading-head {
+  display: flex; align-items: center; gap: 10px;
+  color: var(--text-1); font-size: 14px; font-weight: 600;
+  margin-bottom: 14px;
+}
+.ai-skeleton-list { display: flex; flex-direction: column; gap: 10px; }
+.ai-skeleton-row {
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    var(--glass-1, rgba(140,140,160,0.10)) 25%,
+    var(--glass-2, rgba(140,140,160,0.20)) 37%,
+    var(--glass-1, rgba(140,140,160,0.10)) 63%
+  );
+  background-size: 400% 100%;
+  animation: ai-shimmer 1.4s ease infinite;
+}
+.ai-skeleton-row:nth-child(2) { opacity: 0.85; }
+.ai-skeleton-row:nth-child(3) { opacity: 0.7; }
+.ai-skeleton-row:nth-child(4) { opacity: 0.55; }
+@keyframes ai-shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}

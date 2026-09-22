@@ -1,0 +1,18 @@
+/* ===== overrides — split from styles.css L7729-7745 ===== */
+/* ==========================================================================
+   Responsive page-layout overrides — declared LAST so they win the cascade
+   over the component base rules defined earlier in this file (template-layout
+   ~6239, template-confirm ~6266 [position:sticky], agent-workbench ~4432,
+   channel-actions ~6330). Same specificity + later source order = these win.
+   Fixes the create-channel detail panel overlapping the list on phones.
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .template-layout { grid-template-columns: 1fr; }
+  .template-confirm { position: static; top: auto; }
+  .channel-actions { grid-template-columns: repeat(2, 1fr); }
+  .agent-workbench { grid-template-columns: 1fr; height: auto; }
+}
+@media (max-width: 640px) {
+  .channel-actions { grid-template-columns: 1fr; }
+}
+

@@ -1,0 +1,124 @@
+/* ===== responsive-shell — split from styles.css L3040-3130 ===== */
+/* ==========================================================================
+   Responsive — tablet / phone. Desktop (>1100px) is byte-identical (these
+   rules live entirely inside the breakpoints below). The sidebar becomes an
+   off-canvas drawer opened by a hamburger top bar instead of being hidden.
+   ========================================================================== */
+.mobile-topbar { display: none; }
+.nav-backdrop { display: none; }
+
+@media (max-width: 1100px) {
+  /* Shell: single column; content flows under a sticky top bar. */
+  .app-shell {
+    display: block;
+    height: auto;
+    min-height: 100vh;
+    padding: 0;
+    gap: 0;
+  }
+  .main-col { padding: 14px; gap: 14px; min-height: calc(100vh - 61px); }
+
+  /* Hamburger top bar (mobile/tablet only). */
+  .mobile-topbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    padding: 10px 14px;
+    background: var(--bg-1);
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-topbar-brand { display: flex; align-items: center; }
+  .mobile-topbar-logo { height: 16px; width: auto; display: block; }
+  :root:not([data-theme="light"]) .mobile-topbar-logo {
+    background: #fff; border-radius: 6px; padding: 4px 7px;
+  }
+  .nav-toggle {
+    width: 40px; height: 40px; padding: 0;
+    border: 1px solid var(--border); border-radius: 10px;
+    background: var(--bg-2);
+    display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px;
+    cursor: pointer;
+  }
+  .nav-toggle span { width: 18px; height: 2px; background: var(--text-1); border-radius: 2px; }
+
+  /* Sidebar -> off-canvas drawer. */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: 270px; max-width: 84vw;
+    z-index: 1000;
+    border-radius: 0;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    overflow-y: auto;
+  }
+  .app-shell.nav-open .sidebar { transform: translateX(0); }
+  .nav-backdrop {
+    display: block;
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  /* Stack the wide multi-column page layouts. */
+  .agent-workbench { grid-template-columns: 1fr; height: auto; }
+  /* 长视频工作台带 .no-right(移右栏后 2 列),其特异性(0,2,0)高于上面的 .agent-workbench
+     (0,1,0),手机端压不过 → 仍是 2 列、配置列挤出左侧残影。用更高特异性强制单列。 */
+  .app-shell .agent-workbench.no-right { grid-template-columns: 1fr; }
+
+  /* 手机端工作台排版:对话区(主操作)提到最上;配置栏收成可折叠 <details>(默认收起,显摘要)。 */
+  .agent-chat-panel { order: -1; }
+  .agent-cfg > summary {
+    display: flex; align-items: center; gap: 10px; cursor: pointer;
+    padding: 14px 16px;
+  }
+  .agent-cfg-title { font-weight: 800; font-size: 15px; color: var(--text-1); }
+  .agent-cfg-peek {
+    margin-left: auto; color: var(--text-2); font-size: 12.5px;
+    max-width: 52%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right;
+  }
+  .agent-cfg-chev { flex: none; color: var(--text-2); transition: transform 0.2s ease; }
+  .agent-cfg[open] .agent-cfg-chev { transform: rotate(180deg); }
+  .agent-cfg[open] .agent-cfg-peek { display: none; }
+  .agent-cfg:not([open]) > .agent-cfg-body { display: none; }
+  .agent-cfg[open] > .agent-cfg-body { padding-top: 4px; }
+
+  /* 手机端各栏用自然高度、整页滚动:否则对话区(assistant-center height:100% + 里面 flex:1)
+     会撑满整屏,把配置顶到屏外,用户往下拉只看到编导助手、看不到设置。 */
+  .agent-workbench { min-height: 0; }
+  .agent-panel { height: auto; overflow: visible; }
+  #youtube-config-panel, #shorts-config-panel { overflow: visible; }
+  .assistant-center { height: auto; }
+  .assistant-center > .short-studio-chat,
+  .assistant-center > .script-execute-panel { flex: none; min-height: 0; height: auto; }
+  /* 对话消息区别再 flex:1 撑满 + 内部滚动;手机端自然高、跟着整页滚,输入框紧跟内容后。 */
+  .short-studio-chat .chat-messages { flex: none; overflow: visible; }
+  .short-studio-chat .chat-empty { min-height: 120px; }
+  /* Channel pages: stack the create-channel two-column layout and drop the
+     sticky aside (it was overlapping the list on phones); collapse the 4-up
+     action cards to 2-up. */
+  .template-layout { grid-template-columns: 1fr; }
+  .template-confirm { position: static; top: auto; }
+  .channel-actions { grid-template-columns: repeat(2, 1fr); }
+  .tier1-grid { grid-template-columns: 1fr; }
+  .status-strip { grid-template-columns: repeat(2, 1fr); }
+  .key-row { grid-template-columns: 1fr; }
+  .content-card { padding: 24px 24px 0; }
+  .save-bar { margin: 32px -24px 0; padding: 16px 24px; }
+  .series-stats-row { grid-template-columns: repeat(2, 1fr); }
+  .project-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .main-col { padding: 12px; gap: 12px; }
+  .page-header { flex-wrap: wrap; gap: 8px; }
+  .status-strip { grid-template-columns: 1fr; }
+  .series-stats-row { grid-template-columns: 1fr; }
+  .project-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .billing-pack-grid { grid-template-columns: 1fr; }
+  .content-card { padding: 16px 14px 0; }
+  .save-bar { margin: 20px -14px 0; padding: 12px 14px; }
+}
+

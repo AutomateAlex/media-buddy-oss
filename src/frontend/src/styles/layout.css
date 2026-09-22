@@ -1,0 +1,344 @@
+/* ===== layout — split from styles.css L114-440 ===== */
+/* ==========================================================================
+   App shell + main column
+   ========================================================================== */
+.app-shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  height: 100vh;
+  padding: 16px;
+  gap: 16px;
+}
+.main-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 16px;
+}
+
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+.sidebar {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.20);
+}
+.brand-mark {
+  padding: 18px 16px 14px;
+  display: flex; align-items: center;
+}
+/* Wordmark logo (replaces the old M-square + text). Default theme is DARK and
+   the wordmark is black art, so on dark/gray it sits on a light rounded backdrop
+   to stay legible (keeps the blue accent — no colour-wrecking invert). On the
+   light theme the backdrop drops away. */
+.brand-logo-img {
+  height: 18px; width: auto; max-width: 100%; display: block;
+}
+:root:not([data-theme="light"]) .brand-logo-img {
+  background: #fff; border-radius: 8px; padding: 6px 9px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+}
+
+.new-project-cta {
+  margin: 4px 16px 16px;
+  height: 40px;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--glass-1);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 14px;
+  font-size: 13px; font-weight: 500;
+  color: var(--text-0);
+  transition: background 0.12s, border-color 0.12s;
+}
+.new-project-cta:hover { background: var(--glass-2); }
+.new-project-cta .left { display: flex; align-items: center; gap: 8px; }
+.new-project-cta .kbd {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-2);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.sidebar nav {
+  flex: 1;
+  padding: 0 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+/* Pins 帮助/客服 to the bottom of the nav, just above the account card. */
+.nav-bottom {
+  margin-top: auto;
+  padding-top: 8px;
+}
+.nav-section {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-2);
+  padding: 10px 8px 6px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+.nav-section:first-child { margin-top: 0; }
+
+.nav-section-toggle {
+  width: 100%;
+  text-align: left;
+  display: flex; align-items: center; gap: 8px;
+  background: transparent;
+  color: var(--text-2);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  padding: 10px 8px 6px;
+  margin-top: 12px;
+  transition: color 0.12s;
+}
+.nav-section-toggle:hover { color: var(--text-1); }
+.nav-section-toggle .chev {
+  font-size: 8px;
+  transition: transform 0.18s ease;
+  color: var(--text-2);
+}
+.nav-section-toggle.collapsed .chev { transform: rotate(-90deg); }
+.nav-section-toggle .count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 10px;
+  letter-spacing: 0;
+  color: var(--text-2);
+}
+.nav-group {
+  overflow: hidden;
+  transition: max-height 0.22s ease, opacity 0.18s ease;
+  max-height: 600px;
+  opacity: 1;
+}
+.nav-group.collapsed { max-height: 0; opacity: 0; }
+
+.nav-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: var(--text-1);
+  font-size: 13px;
+  margin-bottom: 2px;
+  position: relative;
+  transition: background 0.12s, color 0.12s;
+  min-height: 36px;
+}
+.nav-item .ic {
+  width: 16px; height: 16px;
+  display: grid; place-items: center;
+  font-size: 13px;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+.nav-item:hover { background: var(--glass-2); color: var(--text-0); }
+.nav-item.active {
+  color: var(--text-0);
+  background: var(--glass-2);
+  font-weight: 500;
+}
+.nav-item.active::before {
+  content: "";
+  position: absolute;
+  left: -8px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.nav-item.active::after {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-left: auto;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+.nav-item .label { flex: 1; min-width: 0; }
+.nav-item .label .main { display: block; font-size: 13px; line-height: 1.2; }
+.nav-item .label .sub { display: block; font-size: 11px; color: var(--text-2); margin-top: 1px; }
+
+/* P3.2: wrap is the relative positioning parent for the UserMenu dropdown.
+   Margin moved here from .user-card so the dropdown can sit flush above
+   it (using bottom: 100% relative to wrap). */
+.user-card-wrap {
+  position: relative;
+  margin: 12px;
+}
+
+.user-card {
+  min-height: 82px;
+  padding: 10px;
+  border-radius: 12px;
+  background: var(--glass-1);
+  border: 1px solid var(--border);
+  display: grid;
+  gap: 9px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.user-card:hover { background: var(--glass-2); }
+.user-card-account {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.user-card-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.user-card .avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff8a65, #ff5252);
+  display: grid; place-items: center;
+  font-size: 13px; font-weight: 600; color: white;
+  flex-shrink: 0;
+}
+.user-card .meta { line-height: 1.3; min-width: 0; flex: 1; overflow: hidden; }
+/* min-width: 0 lets the flex child shrink; without it CJK content forces
+   the row to overflow which manifests as character-per-line wrapping. */
+.user-card .name-row {
+  display: flex; align-items: center; gap: 6px;
+  min-width: 0;
+}
+.user-card .name {
+  font-size: 13px; font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.user-card .badge-pro { flex-shrink: 0; }
+.badge-pro {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.user-card .email {
+  font-size: 11px; color: var(--text-2);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.user-card .chev { color: var(--text-2); font-size: 14px; transition: transform 0.15s, color 0.15s; }
+.user-card:hover .chev { color: var(--text-0); transform: translateX(2px); }
+
+.user-quota {
+  display: grid;
+  gap: 5px;
+}
+
+.user-quota-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--text-2);
+  font-size: 10px;
+}
+
+.user-quota-top strong {
+  color: var(--text-1);
+  font-weight: 700;
+  font-size: 10px;
+}
+
+.user-quota-bar {
+  height: 5px;
+  border-radius: 999px;
+  background: var(--bg-3);
+  overflow: hidden;
+}
+
+.user-quota-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #6d5ef6, #3b82f6);
+}
+.user-card-buy {
+  width: 100%;
+  height: 32px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.user-card-buy:hover {
+  background: var(--accent-2);
+  transform: translateY(-1px);
+}
+
+/* P3.2: user-card is a compact wallet panel with separate account + topup actions. */
+.user-card {
+  width: calc(100% - 24px);
+  margin: 12px;
+  font-family: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+/* P3.2 Avatar (used by user-card + UserMenu header). The Avatar component
+   renders either an <img> with file:// src OR a fallback <div> letter. Both
+   take the same dimensions per size variant. */
+.avatar { flex-shrink: 0; border-radius: 50%; display: block; object-fit: cover; }
+.avatar-sm { width: 24px; height: 24px; }
+.avatar-md { width: 34px; height: 34px; }
+.avatar-lg { width: 44px; height: 44px; }
+.avatar-fallback {
+  background: linear-gradient(135deg, #ff8a65, #ff5252);
+  display: grid; place-items: center;
+  font-weight: 600;
+  color: white;
+}
+.avatar-fallback.avatar-sm { font-size: 10px; }
+.avatar-fallback.avatar-md { font-size: 13px; }
+.avatar-fallback.avatar-lg { font-size: 17px; }
+
+
+/* 侧边栏付费功能的「未开通」角标(热点雷达)。
+   照打磨过的原型 bdf5cb94:入口一直在,只是标出还没开通 ——
+   看得见才会去点,藏起来等于没有。 */
+.nav-item .nav-lock {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 10px;
+  line-height: 1;
+  padding: 3px 6px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--glass-2);
+  color: var(--text-2);
+  white-space: nowrap;
+}

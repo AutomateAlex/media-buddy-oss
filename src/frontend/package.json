@@ -1,0 +1,29 @@
+{
+  "name": "media-buddy",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "axios": "^1.7.0",
+    "i18next": "^26.2.0",
+    "qrcode.react": "^4.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "react-i18next": "^17.0.8",
+    "react-router-dom": "^6.24.0",
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^6.0.1",
+    "typescript": "^5.4.0",
+    "vite": "^8.0.10"
+  },
+  "license": "PolyForm-Noncommercial-1.0.0"
+}

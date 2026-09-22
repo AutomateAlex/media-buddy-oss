@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 禁止浏览器"网页翻译":翻译器会改文字节点,和 React 更新 DOM 打架,导致
+         切换等操作时 removeChild 报错→整页白屏。app 本身有中/英/繁三语,不需要浏览器翻译。 -->
+    <meta name="google" content="notranslate" />
+    <title>Media Buddy</title>
+    <script>
+      // 白屏自愈看门狗:发版后个别设备可能缓存了坏的旧资源,导致 app 加载不出来(白屏),
+      // 而普通用户不会清缓存。这里:若 10 秒后 #root 仍是空的(没渲染),就自动强刷一次
+      // (index.html 是 no-cache,刷新会取到最新引用)。sessionStorage 防死循环,渲染成功则
+      // 清标记,下次仍可自愈。正常加载 ~2 秒,10 秒足够留给慢网,不会误刷正常用户。
+      (function () {
+        var KEY = 'mb-recover-reloaded';
+        setTimeout(function () {
+          var root = document.getElementById('root');
+          if (root && root.childElementCount > 0) {
+            sessionStorage.removeItem(KEY); // 渲染正常
+            return;
+          }
+          if (!sessionStorage.getItem(KEY)) {
+            sessionStorage.setItem(KEY, '1');
+            location.reload(); // 白屏 → 自动强刷一次
+          }
+        }, 10000);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
