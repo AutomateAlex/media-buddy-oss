@@ -6,13 +6,18 @@
 
 This is the source-available edition of [Media Buddy](https://media-buddy.com), released under the **PolyForm Noncommercial 1.0.0** license: free for personal, educational, research and nonprofit use; **any commercial use needs a separate license** (hello@media-buddy.com).
 
-| | This repo (noncommercial) | Hosted version ([media-buddy.com](https://media-buddy.com)) |
+> **Want better footage, endless topics, or zero setup?** The same engine runs hosted at **[media-buddy.com](https://media-buddy.com/?utm_source=github&utm_medium=readme&utm_campaign=oss)** with a licensed HD stock library, an AI topic engine, a YouTube trend radar, footage import + AI editing, and an MCP server for Claude Code / Codex. No keys to manage, pay per video. → [What you get on the hosted version](#when-to-move-to-the-hosted-version)
+
+| | This repo (noncommercial) | Hosted version ([media-buddy.com](https://media-buddy.com/?utm_source=github&utm_medium=readme&utm_campaign=oss)) |
 |---|---|---|
 | Setup | Paste your own keys (Settings → API Keys) | Zero setup, sign in and render |
-| Stock footage | Pexels, Pixabay, Coverr | HD stock library included |
-| AI topic engine / trend radar | — (you type the titles) | Endless topic suggestions + YouTube trend radar |
-| Footage import & AI editing | — | Included |
-| Cost | Pay your providers directly | Credits |
+| Stock footage | Free libraries (Pexels, Pixabay, Coverr) — coverage varies by topic | Licensed HD stock library, director-picked per shot |
+| Voices | Free Edge voices; Qwen / ElevenLabs with your own keys | Premium voices included |
+| Topics | You type the titles | AI topic engine + YouTube trend radar |
+| Your own footage | — | Import + AI editing |
+| Agents | — | Media Buddy MCP (stock search & shot review from Claude Code / Codex) |
+| Cost | Pay your providers directly | Pay per video, no key management |
+| Support & updates | Community, this repo | Product support, continuous updates |
 
 ## What is in the box
 
@@ -75,6 +80,18 @@ cd src/frontend && npm run dev           # hot-reload UI on :5173 (backend on :8
 
 Tests never call the network (`MEDIA_BUDDY_ALLOW_OFFLINE=1` is set by `tests/conftest.py`).
 
+## When to move to the hosted version
+
+You can run this build forever for noncommercial use. People usually move to [media-buddy.com](https://media-buddy.com/?utm_source=github&utm_medium=readme&utm_campaign=oss) when one of these bites:
+
+1. **Footage.** Free libraries run thin on specific subjects (a named animal, a historic place, a niche craft). The hosted engine picks from a licensed HD library shot by shot, so fewer chunks fall back to generic B-roll.
+2. **Topics.** Here you type every title. Hosted adds an AI topic engine per channel and a YouTube trend radar, so a channel can publish daily without a writer's room.
+3. **Your own material.** Import your footage and let the AI editor cut it; not available in this build.
+4. **Agents.** The Media Buddy MCP server lets Claude Code / Codex search stock, build a review pack and lock picks for a shot list, then render through Media Buddy.
+5. **Commercial use.** This repo is noncommercial. Any business use goes through the hosted product or a commercial license (hello@media-buddy.com).
+
+Channels, scripts and voice settings work the same way on both, so what you learn here carries over.
+
 ## Not included (hosted version only)
 
 AI topic engine, YouTube trend radar, footage import / AI editing, cloud accounts and billing. Hooks for them were removed, not stubbed: this build runs single-user on SQLite with an in-process render worker.
@@ -96,6 +113,8 @@ Third-party components keep their own licenses: [THIRD_PARTY_LICENSES.md](./THIR
 
 这是 [Media Buddy](https://media-buddy.com) 的源码公开版（**PolyForm Noncommercial 1.0.0**：个人、学习、科研、非营利可自由使用和修改；**任何商业用途需另行授权**，联系 hello@media-buddy.com）。
 
+> **想要更好的素材、不用自己想选题、也不想配 key？** 同一套引擎的托管版在 **[media-buddy.com](https://media-buddy.com/?utm_source=github&utm_medium=readme&utm_campaign=oss)**：自带授权高清素材库、AI 智能选题、YouTube 热点雷达、素材导入 + AI 剪辑，还有给 Claude Code / Codex 用的 MCP。按条付费，不用管 key。→ [什么时候该换托管版](#什么时候该换托管版)
+
 ### 里面有什么
 
 - **频道** —— 建频道（AI 帮你设计定位），记住配音 / 语言 / 格式默认值，一行一个标题批量出片。
@@ -115,9 +134,25 @@ Third-party components keep their own licenses: [THIRD_PARTY_LICENSES.md](./THIR
 
 ### 本仓库 vs 托管版
 
-| | 本仓库（非商用） | 托管版 media-buddy.com |
+| | 本仓库（非商用） | 托管版 [media-buddy.com](https://media-buddy.com/?utm_source=github&utm_medium=readme&utm_campaign=oss) |
 |---|---|---|
-| 配置 | 自己填 key | 零配置 |
-| 素材 | Pexels / Pixabay / Coverr | 自带高清素材库 |
-| 智能选题 / 热点雷达 | 无（标题自己写） | 有 |
-| 素材导入 / 智能剪辑 | 无 | 有 |
+| 配置 | 自己填 key | 零配置，登录即出片 |
+| 素材 | 免费素材库（Pexels / Pixabay / Coverr），冷门题材经常搜不到 | 授权高清素材库，导演逐镜头挑 |
+| 配音 | 免费 Edge 音色；千问 / ElevenLabs 要自己的 key | 高级音色内置 |
+| 选题 | 标题自己写 | AI 智能选题 + YouTube 热点雷达 |
+| 自己的素材 | 无 | 素材导入 + AI 剪辑 |
+| AI 助手 | 无 | Media Buddy MCP（在 Claude Code / Codex 里搜素材、审镜头） |
+| 费用 | 直接付给各家供应商 | 按条付费，不用管 key |
+| 支持与更新 | 社区、本仓库 | 产品支持、持续更新 |
+
+### 什么时候该换托管版
+
+非商用可以一直用这个版本。大家一般在这几种情况下换到 [media-buddy.com](https://media-buddy.com/?utm_source=github&utm_medium=readme&utm_campaign=oss)：
+
+1. **素材不够用。** 免费库在具体题材上很薄（某种动物、某个古迹、某门手艺），出片会退到泛泛的空镜。托管版从授权高清库里逐镜头挑，兜底少得多。
+2. **选题跟不上。** 这里每个标题都要自己写；托管版每个频道都有 AI 选题和 YouTube 热点雷达，能做到日更。
+3. **想用自己的素材。** 导入自己的片子让 AI 剪，这个版本没有。
+4. **想让 AI 助手干活。** Media Buddy MCP 让 Claude Code / Codex 直接搜素材、出复审包、锁定镜头，再交给 Media Buddy 出片。
+5. **要商用。** 本仓库不可商用；商业使用走托管版或另签授权（hello@media-buddy.com）。
+
+频道、剧本、配音设置两边逻辑一样，在这里学会的用法过去照样能用。

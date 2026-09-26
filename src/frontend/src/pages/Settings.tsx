@@ -9,7 +9,7 @@ import type { SettingsKeyGroup, SettingsKeyRow } from '../types'
  * Keys are stored by the backend (OS keychain) and take effect immediately;
  * the page only ever sees "configured / not configured", never the value.
  */
-const HOSTED_URL = 'https://media-buddy.com'
+const HOSTED_URL = 'https://media-buddy.com/?utm_source=oss-app&utm_medium=settings&utm_campaign=oss'
 
 function openExternal(url: string): void {
   window.open(url, '_blank', 'noopener')

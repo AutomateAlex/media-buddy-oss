@@ -276,7 +276,7 @@ export function Account() {
               <p className="hint">{t('settingsPage.accountBlurb')}</p>
               <div className="account-actions-row">
                 <NavLink to="/settings" className="account-btn-primary">{t('settingsPage.openSettings')}</NavLink>
-                <button type="button" className="account-btn-secondary" onClick={() => openExternal('https://media-buddy.com')}>
+                <button type="button" className="account-btn-secondary" onClick={() => openExternal('https://media-buddy.com/?utm_source=oss-app&utm_medium=account&utm_campaign=oss')}>
                   {t('settingsPage.hostedCta')}
                 </button>
               </div>
@@ -335,7 +335,7 @@ export function Account() {
             )}
           </div>
           <div className="about-actions">
-            <button type="button" className="about-btn-secondary" onClick={() => openExternal('https://media-buddy.com')}>
+            <button type="button" className="about-btn-secondary" onClick={() => openExternal('https://media-buddy.com/?utm_source=oss-app&utm_medium=account&utm_campaign=oss')}>
               {t('common.visitWebsite')}
             </button>
             <button type="button" className="about-btn-primary" onClick={() => setAboutOpen(false)}>

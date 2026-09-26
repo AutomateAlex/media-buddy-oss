@@ -260,7 +260,7 @@ export default {
     roleYou: '你',
   },
   pipelineProgress: {
-    pipelineFailedCheckLogs: '生成失敗了，可以重新生成試試。',
+    pipelineFailedCheckLogs: '生成失敗了，可以重新生成試試。如果是找不到合適素材，託管版 media-buddy.com 自帶高清素材庫。',
     workingGeneric: '正在為你生成影片…',
     stuckGeneric: '遇到點小波折，正在重試…',
     done: '已完成',

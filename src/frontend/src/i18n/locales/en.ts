@@ -260,7 +260,7 @@ export default {
     roleYou: 'You',
   },
   pipelineProgress: {
-    pipelineFailedCheckLogs: 'Generation failed. You can try rendering again.',
+    pipelineFailedCheckLogs: 'Generation failed. You can try rendering again. If no suitable footage was found, the hosted version at media-buddy.com ships with an HD stock library.',
     workingGeneric: 'Producing your video…',
     stuckGeneric: 'Hit a snag — retrying…',
     done: 'Done',
