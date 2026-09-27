@@ -260,7 +260,7 @@ export default {
     roleYou: 'You',
   },
   pipelineProgress: {
-    pipelineFailedCheckLogs: 'Generation failed. You can try rendering again. If no suitable footage was found, the hosted version at media-buddy.com ships with an HD stock library.',
+    pipelineFailedCheckLogs: 'Generation failed. You can try rendering again, or try the hosted version at media-buddy.com.',
     workingGeneric: 'Producing your video…',
     stuckGeneric: 'Hit a snag — retrying…',
     done: 'Done',
@@ -1040,7 +1040,7 @@ export default {
     saved: "Saved — in effect now.",
     saveFailed: "Save failed",
     hostedTitle: "Prefer zero setup?",
-    hostedBlurb: "The hosted version at media-buddy.com includes an HD stock library, the AI topic engine and the trend radar with no keys to manage.",
+    hostedBlurb: 'The hosted version at media-buddy.com runs the same engine with zero setup.',
     hostedCta: "Try media-buddy.com",
     keysOk: "Provider keys are configured — you are ready to render.",
     keysMissing: "No LLM key yet. Add OPENROUTER_API_KEY under API Keys.",

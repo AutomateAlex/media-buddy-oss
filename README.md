@@ -6,24 +6,11 @@
 
 This is the source-available edition of [Media Buddy](https://media-buddy.com), released under the **PolyForm Noncommercial 1.0.0** license: free for personal, educational, research and nonprofit use. **Commercial use of this repository is not permitted.** For business use, use the hosted product at [media-buddy.com](https://media-buddy.com).
 
-> **Want better footage, endless topics, or zero setup?** The same engine runs hosted at **[media-buddy.com](https://media-buddy.com/?utm_source=github&utm_medium=readme&utm_campaign=oss)** with a licensed HD stock library, an AI topic engine, a YouTube trend radar, footage import + AI editing, and an MCP server for Claude Code / Codex. No keys to manage, pay per video. → [What you get on the hosted version](#when-to-move-to-the-hosted-version)
-
-| | This repo (noncommercial) | Hosted version ([media-buddy.com](https://media-buddy.com/?utm_source=github&utm_medium=readme&utm_campaign=oss)) |
-|---|---|---|
-| Setup | Paste your own keys (Settings → API Keys) | Zero setup, sign in and render |
-| Stock footage | Free libraries (Pexels, Pixabay, Coverr) — coverage varies by topic | Licensed HD stock library, director-picked per shot |
-| Voices | Free Edge voices; Qwen / ElevenLabs with your own keys | Premium voices included |
-| Topics | You type the titles | AI topic engine + YouTube trend radar |
-| Your own footage | — | Import + AI editing |
-| Agents | — | Media Buddy MCP (stock search & shot review from Claude Code / Codex) |
-| Cost | Pay your providers directly | Pay per video, no key management |
-| Support & updates | Community, this repo | Product support, continuous updates |
-
 ## What it does
 
 Media Buddy is a **video factory for talking-head-free explainer content**: knowledge shorts, documentary-style narration, animal / history / science / business channels, "did you know" formats. You do not shoot anything. You give it a channel positioning and a title; it writes, voices, illustrates with stock footage, subtitles, scores and renders a finished MP4 you can upload as-is.
 
-It is the same engine that powers the hosted product, minus the parts that need our infrastructure (see [Not included](#not-included-hosted-version-only)).
+A hosted version with zero setup runs at [media-buddy.com](https://media-buddy.com/?utm_source=github&utm_medium=readme&utm_campaign=oss).
 
 ![Channel workbench](docs/img/channel-workbench.png)
 
@@ -60,7 +47,7 @@ Everything runs on your machine. The only network calls are to the providers who
 - **Cost per video with your own keys:** around 20–40 LLM calls for a short (mostly small models); usually a few US cents, plus the voice provider if you use one. Stock libraries are free within their rate limits.
 - **Footage quality is bounded by the free libraries.** Common subjects (nature, cities, food, hands at work) look good. Narrow subjects (a specific species, a named building, a historical figure) are often thin on Pexels/Pixabay. When no acceptable clip exists for a chunk the render **fails closed** instead of padding with random B-roll, and the project shows which chunk had no match. That is deliberate.
 - **Languages:** Chinese-first; English scripts and voices work. Other output languages are not tuned.
-- **What it will not do (in this build):** suggest topics for you, import or edit your own footage, generate AI video clips, upload to platforms, or run for multiple users. These are hosted-only.
+- **What it will not do:** suggest topics for you, import or edit your own footage, generate AI video clips, upload to platforms, or run for multiple users.
 
 ![Projects](docs/img/projects.png)
 
@@ -118,22 +105,6 @@ cd src/frontend && npm run dev           # hot-reload UI on :5173 (backend on :8
 
 Tests never call the network (`MEDIA_BUDDY_ALLOW_OFFLINE=1` is set by `tests/conftest.py`).
 
-## When to move to the hosted version
-
-You can run this build forever for noncommercial use. People usually move to [media-buddy.com](https://media-buddy.com/?utm_source=github&utm_medium=readme&utm_campaign=oss) when one of these bites:
-
-1. **Footage.** Free libraries run thin on specific subjects (a named animal, a historic place, a niche craft). The hosted engine picks from a licensed HD library shot by shot, so fewer chunks fall back to generic B-roll.
-2. **Topics.** Here you type every title. Hosted adds an AI topic engine per channel and a YouTube trend radar, so a channel can publish daily without a writer's room.
-3. **Your own material.** Import your footage and let the AI editor cut it; not available in this build.
-4. **Agents.** The Media Buddy MCP server lets Claude Code / Codex search stock, build a review pack and lock picks for a shot list, then render through Media Buddy.
-5. **Commercial use.** This repo is noncommercial and stays that way. Any business use goes through the hosted product.
-
-Channels, scripts and voice settings work the same way on both, so what you learn here carries over.
-
-## Not included (hosted version only)
-
-AI topic engine, YouTube trend radar, footage import / AI editing, cloud accounts and billing. Hooks for them were removed, not stubbed: this build runs single-user on SQLite with an in-process render worker.
-
 ## License
 
 **PolyForm Noncommercial 1.0.0** — see [LICENSE](./LICENSE) and [NOTICE](./NOTICE).
@@ -151,13 +122,11 @@ Third-party components keep their own licenses: [THIRD_PARTY_LICENSES.md](./THIR
 
 这是 [Media Buddy](https://media-buddy.com) 的源码公开版（**PolyForm Noncommercial 1.0.0**：个人、学习、科研、非营利可自由使用和修改；**本仓库不可商业使用**，商用请用托管版 [media-buddy.com](https://media-buddy.com)）。
 
-> **想要更好的素材、不用自己想选题、也不想配 key？** 同一套引擎的托管版在 **[media-buddy.com](https://media-buddy.com/?utm_source=github&utm_medium=readme&utm_campaign=oss)**：自带授权高清素材库、AI 智能选题、YouTube 热点雷达、素材导入 + AI 剪辑，还有给 Claude Code / Codex 用的 MCP。按条付费，不用管 key。→ [什么时候该换托管版](#什么时候该换托管版)
-
 ### 它是干什么的
 
 Media Buddy 是一台**不用出镜的解说类视频工厂**：知识短视频、纪录片式解说、动物 / 历史 / 科普 / 商业频道、「你知道吗」这类内容。你不用拍任何东西，给它一个频道定位和一个标题，它自己写稿、配音、配画面、上字幕、配乐，合成一条能直接上传的 MP4。
 
-和托管版是同一套引擎，只是去掉了依赖我们基础设施的部分（见下方「托管版独有」）。
+零配置的托管版在 [media-buddy.com](https://media-buddy.com/?utm_source=github&utm_medium=readme&utm_campaign=oss)。
 
 ### 一条片子是怎么出来的
 
@@ -189,7 +158,7 @@ Media Buddy 是一台**不用出镜的解说类视频工厂**：知识短视频�
 - **用自己 key 的花费**：一条短视频大约 20–40 次模型调用（多数是小模型），一般几美分；用了付费配音另算。免费素材库在限额内不要钱。
 - **画面质量受限于免费素材库。** 常见题材（自然、城市、美食、手工）效果不错；冷门题材（某种具体动物、某座建筑、某个历史人物）在 Pexels/Pixabay 上经常很薄。**某一段实在找不到合格素材时，它会直接判失败，而不是随便塞空镜糊弄**，项目页会标出是哪一段没找到。这是有意为之。
 - **语言**：中文为主，英文稿和英文配音可用；其他语言没调过。
-- **这个版本不做的事**：帮你想选题、导入或剪你自己的素材、AI 生成视频片段、一键发布到平台、多用户。这些只在托管版有。
+- **这个版本不做的事**：帮你想选题、导入或剪你自己的素材、AI 生成视频片段、一键发布到平台、多用户。
 
 ### 三步跑起来
 
@@ -200,28 +169,3 @@ Media Buddy 是一台**不用出镜的解说类视频工厂**：知识短视频�
 3. `cd src && uvicorn backend.main:app --port 8000`，浏览器打开 `http://127.0.0.1:8000`
 
 进「设置 → API 密钥」填 `OPENROUTER_API_KEY` 和 `PEXELS_API_KEY`，就能出片（所有大模型调用都走 OpenRouter 一把 key）。想要千问配音再填 `MEDIA_BUDDY_QWEN_API_KEY`，不填用免费的 Edge 音色。
-
-### 本仓库 vs 托管版
-
-| | 本仓库（非商用） | 托管版 [media-buddy.com](https://media-buddy.com/?utm_source=github&utm_medium=readme&utm_campaign=oss) |
-|---|---|---|
-| 配置 | 自己填 key | 零配置，登录即出片 |
-| 素材 | 免费素材库（Pexels / Pixabay / Coverr），冷门题材经常搜不到 | 授权高清素材库，导演逐镜头挑 |
-| 配音 | 免费 Edge 音色；千问 / ElevenLabs 要自己的 key | 高级音色内置 |
-| 选题 | 标题自己写 | AI 智能选题 + YouTube 热点雷达 |
-| 自己的素材 | 无 | 素材导入 + AI 剪辑 |
-| AI 助手 | 无 | Media Buddy MCP（在 Claude Code / Codex 里搜素材、审镜头） |
-| 费用 | 直接付给各家供应商 | 按条付费，不用管 key |
-| 支持与更新 | 社区、本仓库 | 产品支持、持续更新 |
-
-### 什么时候该换托管版
-
-非商用可以一直用这个版本。大家一般在这几种情况下换到 [media-buddy.com](https://media-buddy.com/?utm_source=github&utm_medium=readme&utm_campaign=oss)：
-
-1. **素材不够用。** 免费库在具体题材上很薄（某种动物、某个古迹、某门手艺），出片会退到泛泛的空镜。托管版从授权高清库里逐镜头挑，兜底少得多。
-2. **选题跟不上。** 这里每个标题都要自己写；托管版每个频道都有 AI 选题和 YouTube 热点雷达，能做到日更。
-3. **想用自己的素材。** 导入自己的片子让 AI 剪，这个版本没有。
-4. **想让 AI 助手干活。** Media Buddy MCP 让 Claude Code / Codex 直接搜素材、出复审包、锁定镜头，再交给 Media Buddy 出片。
-5. **要商用。** 本仓库不可商用，也不提供商业授权；商业使用请走托管版。
-
-频道、剧本、配音设置两边逻辑一样，在这里学会的用法过去照样能用。

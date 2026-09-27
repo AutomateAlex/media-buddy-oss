@@ -260,7 +260,7 @@ export default {
     roleYou: '你',
   },
   pipelineProgress: {
-    pipelineFailedCheckLogs: '生成失败了，可以重新生成试试。如果是找不到合适素材，托管版 media-buddy.com 自带高清素材库。',
+    pipelineFailedCheckLogs: '生成失败了，可以重新生成试试。也可以试试托管版 media-buddy.com。',
     workingGeneric: '正在为你生成视频…',
     stuckGeneric: '遇到点小波折，正在重试…',
     done: '已完成',
@@ -1040,7 +1040,7 @@ export default {
     saved: "已保存，立即生效。",
     saveFailed: "保存失败",
     hostedTitle: "不想配 key？",
-    hostedBlurb: "托管版 media-buddy.com 自带高清素材库、智能选题和热点雷达，零配置直接出片。",
+    hostedBlurb: '托管版 media-buddy.com 是同一套引擎的在线版本，零配置直接出片。',
     hostedCta: "去 media-buddy.com 试试",
     keysOk: "各家 key 已配置，可以直接出片。",
     keysMissing: "还没配大模型 key，请到「API 密钥」页填 OPENROUTER_API_KEY。",
