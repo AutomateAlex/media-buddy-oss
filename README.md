@@ -31,7 +31,7 @@ It is the same engine that powers the hosted product, minus the parts that need 
 
 | Stage | What happens | What you get |
 |---|---|---|
-| 1. Script | The AI director researches the topic online (Perplexity Sonar via OpenRouter), then writes a spoken script in the channel's voice, with the channel rules (positioning, forbidden topics, closure style) enforced. A length model keeps it inside the target duration and a "story lands" check rejects scripts that trail off. | `script.txt` you can read and edit |
+| 1. Script | The AI director researches the topic online, then writes a spoken script in the channel's voice, with the channel rules (positioning, forbidden topics, closure style) enforced. A length model keeps it inside the target duration and a "story lands" check rejects scripts that trail off. | `script.txt` you can read and edit |
 | 2. Voice | Text-to-speech with word-level timestamps. Qwen (24 Mandarin voices) with your key, free Microsoft Edge voices without one, ElevenLabs optional. Speed and pacing are calibrated per voice so a 60-second target really comes out near 60 seconds. | `narration.mp3` + word timings |
 | 3. Shot plan | The script is split into visual chunks (about one per sentence). For each chunk the director decides what the viewer should see, writes English stock-search queries, and lists what must / must not appear. | `visual_plan.json` |
 | 4. Footage | Every chunk searches the free stock libraries (Pexels, Pixabay, Coverr). Candidates are filtered by metadata, then a vision model looks at each thumbnail and accepts or rejects it against the chunk's intent. Repeats are capped so the same clip is not reused across the video. | one clip per chunk, plus a selection trace explaining every pick |
@@ -163,7 +163,7 @@ Media Buddy 是一台**不用出镜的解说类视频工厂**：知识短视频�
 
 | 阶段 | 做了什么 | 你拿到什么 |
 |---|---|---|
-| 1. 写稿 | AI 编导先上网查资料（经 OpenRouter 调 Perplexity Sonar），再按频道的口吻写口播稿；频道规则（定位、禁区、结尾方式）强制生效。长度模型把稿子压在目标时长内，「故事有没有讲完」的检查会打回虎头蛇尾的稿子。 | 可读可改的 `script.txt` |
+| 1. 写稿 | AI 编导先上网查资料，再按频道的口吻写口播稿；频道规则（定位、禁区、结尾方式）强制生效。长度模型把稿子压在目标时长内，「故事有没有讲完」的检查会打回虎头蛇尾的稿子。 | 可读可改的 `script.txt` |
 | 2. 配音 | 带逐字时间戳的语音合成。有千问 key 用 24 个中文音色，没有就用免费的微软 Edge 音色，ElevenLabs 可选。每个音色都做过语速标定，要 60 秒就基本出 60 秒。 | `narration.mp3` + 字级时间 |
 | 3. 分镜 | 稿子按句切成画面段。每段由编导决定观众该看到什么，写英文的素材搜索词，列出必须出现 / 不能出现的东西。 | `visual_plan.json` |
 | 4. 取材 | 每段去免费素材库（Pexels、Pixabay、Coverr）搜。先按元数据过滤，再让视觉模型逐张看缩略图，对着这一段的意图判「要 / 不要」。同一条片里同一个素材有复用上限。 | 每段一条素材 + 一份解释「为什么选它」的选片记录 |
