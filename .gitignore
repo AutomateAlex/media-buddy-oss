@@ -102,8 +102,7 @@ prompts_dump/
 mb_*.tar.gz
 
 # ── 密钥文件：任何形状的 env 都不许进仓（2026-08-15 加固）──────
-# 原来只挡 `.env` / `.env.local`，而服务器上的文件叫 `worker.env`、
-# `worker.staging.env` —— 有人把它拷到本地排查，一个 `git add .` 就进去了。
+# Any *.env file is a secrets file.
 *.env
 !.env.example
 worker*.env

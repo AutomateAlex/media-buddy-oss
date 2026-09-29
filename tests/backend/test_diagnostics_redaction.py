@@ -181,7 +181,7 @@ def test_token_and_secret_env_shapes_are_redacted():
 
     for line in (
         "OPENROUTER_TOKEN=or-abcdefghijklmnopqrstuvwxyz",
-        "SUPABASE_SERVICE_SECRET=svc_abcdefghijklmnop1234",
+        "EXAMPLE_SERVICE_SECRET=svc_abcdefghijklmnop1234",
         "DB_PASSWORD=hunter2hunter2hunter2",
     ):
         out = redact(line)
