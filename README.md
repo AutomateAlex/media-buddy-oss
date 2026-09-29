@@ -1,5 +1,9 @@
 # Media Buddy (source-available, noncommercial)
 
+[![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/license-PolyForm%20Noncommercial%201.0.0-blue)](./LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/AutomateAlex/media-buddy-oss?style=social)](https://github.com/AutomateAlex/media-buddy-oss/stargazers)
+[![Hosted version](https://img.shields.io/badge/hosted-media--buddy.com-7c4dff)](https://media-buddy.com/?utm_source=github&utm_medium=badge&utm_campaign=oss)
+
 **Give it a channel and a few titles → get finished short or long videos.** Script by an AI director, stock footage matched shot by shot, voice-over, subtitles, music — rendered locally with ffmpeg, using **your own API keys**.
 
 > 中文说明在下方 → [中文](#中文)
